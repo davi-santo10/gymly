@@ -1,0 +1,1074 @@
+[
+  {
+    "id": "ex_1",
+    "name": "Barbell Bench Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_2",
+    "name": "Dumbbell Bench Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_3",
+    "name": "Incline Dumbbell Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_4",
+    "name": "Push-up",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_5",
+    "name": "Chest Dip",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_6",
+    "name": "Dumbbell Fly",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_7",
+    "name": "Cable Crossover",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_8",
+    "name": "Incline Barbell Bench Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_9",
+    "name": "Decline Barbell Bench Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_10",
+    "name": "Incline Dumbbell Fly",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_11",
+    "name": "Decline Dumbbell Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_12",
+    "name": "Pec-Deck Machine",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_13",
+    "name": "Machine Chest Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_14",
+    "name": "Smith Machine Bench Press",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_15",
+    "name": "Dumbbell Pullover",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_16",
+    "name": "Incline Push-up",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_17",
+    "name": "Decline Push-up",
+    "muscleGroup": "CHEST",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_18",
+    "name": "Pull-up",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_19",
+    "name": "Lat Pulldown",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_20",
+    "name": "Bent Over Barbell Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_21",
+    "name": "T-Bar Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_22",
+    "name": "Seated Cable Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_23",
+    "name": "Dumbbell Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_24",
+    "name": "Face Pull",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_25",
+    "name": "Chin-up",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_26",
+    "name": "Pendlay Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_27",
+    "name": "Inverted Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_28",
+    "name": "Straight-Arm Pulldown",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_29",
+    "name": "Rack Pull",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_30",
+    "name": "Hyperextension",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_31",
+    "name": "Machine Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_32",
+    "name": "Seal Row",
+    "muscleGroup": "BACK",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_33",
+    "name": "Barbell Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_34",
+    "name": "Dumbbell Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_35",
+    "name": "Hammer Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_36",
+    "name": "Preacher Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_37",
+    "name": "Concentration Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_38",
+    "name": "EZ-Bar Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_39",
+    "name": "Incline Dumbbell Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_40",
+    "name": "Cable Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_41",
+    "name": "Reverse Grip Barbell Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_42",
+    "name": "Spider Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_43",
+    "name": "Zottman Curl",
+    "muscleGroup": "BICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_44",
+    "name": "Tricep Pushdown (Rope)",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_45",
+    "name": "Skull Crusher",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_46",
+    "name": "Close-Grip Bench Press",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_47",
+    "name": "Overhead Tricep Extension",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_48",
+    "name": "Bench Dip",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_49",
+    "name": "Tricep Kickback",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_50",
+    "name": "Diamond Push-up",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_51",
+    "name": "Seated Triceps Press",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_52",
+    "name": "Tate Press",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_53",
+    "name": "JM Press",
+    "muscleGroup": "TRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_54",
+    "name": "Overhead Press (Barbell)",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_55",
+    "name": "Seated Dumbbell Press",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_56",
+    "name": "Dumbbell Lateral Raise",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_57",
+    "name": "Dumbbell Front Raise",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_58",
+    "name": "Bent Over Dumbbell Raise",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_59",
+    "name": "Barbell Shrug",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_60",
+    "name": "Arnold Press",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_61",
+    "name": "Upright Row",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_62",
+    "name": "Machine Shoulder Press",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_63",
+    "name": "Cable Lateral Raise",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_64",
+    "name": "Landmine Press",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_65",
+    "name": "Reverse Pec-Deck",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_66",
+    "name": "Pike Push-up",
+    "muscleGroup": "SHOULDERS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_67",
+    "name": "Dumbbell Wrist Curl",
+    "muscleGroup": "FOREARM",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_68",
+    "name": "Dumbbell Reverse Wrist Curl",
+    "muscleGroup": "FOREARM",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_69",
+    "name": "Farmer's Walk",
+    "muscleGroup": "FOREARM",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_70",
+    "name": "Barbell Wrist Curl",
+    "muscleGroup": "FOREARM",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_71",
+    "name": "Barbell Reverse Wrist Curl",
+    "muscleGroup": "FOREARM",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_72",
+    "name": "Plate Pinch",
+    "muscleGroup": "FOREARM",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_73",
+    "name": "Wrist Roller",
+    "muscleGroup": "FOREARM",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_74",
+    "name": "Crunch",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_75",
+    "name": "Plank",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_76",
+    "name": "Leg Raise",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_77",
+    "name": "Russian Twist",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_78",
+    "name": "Hanging Knee Raise",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_79",
+    "name": "Cable Crunch",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_80",
+    "name": "Side Plank",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_81",
+    "name": "Hanging Leg Raise",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_82",
+    "name": "Ab Rollout",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_83",
+    "name": "Wood Chop",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_84",
+    "name": "Pallof Press",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_85",
+    "name": "Bicycle Crunch",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_86",
+    "name": "Dead Bug",
+    "muscleGroup": "CORE",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_87",
+    "name": "Barbell Back Squat",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_88",
+    "name": "Leg Press",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_89",
+    "name": "Lunge",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_90",
+    "name": "Leg Extension",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_91",
+    "name": "Goblet Squat",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_92",
+    "name": "Barbell Front Squat",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_93",
+    "name": "Hack Squat",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_94",
+    "name": "Bulgarian Split Squat",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_95",
+    "name": "Sissy Squat",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_96",
+    "name": "Step-Up",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_97",
+    "name": "Walking Lunge",
+    "muscleGroup": "QUADRICEPS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_98",
+    "name": "Deadlift",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_99",
+    "name": "Romanian Deadlift",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_100",
+    "name": "Lying Leg Curl",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_101",
+    "name": "Seated Leg Curl",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_102",
+    "name": "Good Morning",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_103",
+    "name": "Stiff-Legged Deadlift",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_104",
+    "name": "Glute-Ham Raise (GHR)",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_105",
+    "name": "Kettlebell Swing",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_106",
+    "name": "Nordic Hamstring Curl",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_107",
+    "name": "Single-Leg Romanian Deadlift",
+    "muscleGroup": "HAMSTRINGS",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_108",
+    "name": "Standing Calf Raise",
+    "muscleGroup": "CALVES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_109",
+    "name": "Seated Calf Raise",
+    "muscleGroup": "CALVES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_110",
+    "name": "Donkey Calf Raise",
+    "muscleGroup": "CALVES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_111",
+    "name": "Leg Press Calf Raise",
+    "muscleGroup": "CALVES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_112",
+    "name": "Smith Machine Calf Raise",
+    "muscleGroup": "CALVES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_113",
+    "name": "Single-Leg Calf Raise",
+    "muscleGroup": "CALVES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_114",
+    "name": "Tibialis Raise",
+    "muscleGroup": "CALVES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_115",
+    "name": "Treadmill",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_116",
+    "name": "Stationary Bike",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_117",
+    "name": "Elliptical",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_118",
+    "name": "Rowing Machine",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_119",
+    "name": "StairMaster",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_120",
+    "name": "Outdoor Running",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_121",
+    "name": "Cycling",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_122",
+    "name": "Swimming",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_123",
+    "name": "Jump Rope",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_124",
+    "name": "HIIT Training",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_125",
+    "name": "Walking",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_126",
+    "name": "Jogging",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_127",
+    "name": "Spin Class",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_128",
+    "name": "Burpees",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_129",
+    "name": "Mountain Climbers",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_130",
+    "name": "Boxing",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_131",
+    "name": "Kickboxing",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_132",
+    "name": "Dance Cardio",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_133",
+    "name": "Step Aerobics",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  },
+  {
+    "id": "ex_134",
+    "name": "Zumba",
+    "muscleGroup": "CARDIO",
+    "type": "CARDIO",
+    "restTime": null,
+    "imageUrl": null
+  }
+]
