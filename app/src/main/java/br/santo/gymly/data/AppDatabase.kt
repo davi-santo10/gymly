@@ -5,8 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import PrepopulateCallback
 
-@Database(entities = [Exercise::class], version = 1, exportSchema = false)
+// BUMP THE VERSION NUMBER FROM 1 TO 2
+@Database(entities = [Exercise::class], version = 2, exportSchema = false)
 @TypeConverters(ExerciseTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -23,6 +25,9 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "gym_database"
                 )
+                    .addCallback(PrepopulateCallback(context))
+                    // ADD THIS LINE to handle the version change
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

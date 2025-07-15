@@ -30,8 +30,8 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 @Composable
 fun GymlyApp(modifier: Modifier = Modifier, windowSizeClass: WindowSizeClass) {
     NavigationSuite(modifier = modifier, windowSizeClass = windowSizeClass.widthSizeClass)
-
 }
+
 @Composable
 fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthSizeClass){
     val navController = rememberNavController()
@@ -44,7 +44,6 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
             modifier = modifier,
             bottomBar = {
                 NavigationBar (windowInsets = NavigationBarDefaults.windowInsets) {
-                    val currentRoute = navBackStackEntry?.destination?.route
                     navigationItems.forEach { screen ->
                         NavigationBarItem(
                             selected = (currentRoute == screen.route),
@@ -60,12 +59,9 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
                             icon = { Icon(screen.icon, contentDescription = null) },
                             label = { Text(screen.title) }
                         )
-
                     }
-
                 }
             }
-
         ) { innerPadding ->
             NavHost(
                 navController = navController,
@@ -78,9 +74,6 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
                 composable(Screen.Progress.route) { ProgressScreen() }
                 composable(Screen.Friends.route) { FriendsScreen() }
             }
-
-
-
         }
     } else {
         Row(Modifier.fillMaxSize()) {
@@ -99,7 +92,6 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
                         },
                         icon = { Icon(screen.icon, contentDescription = null) },
                         label = { Text(screen.title) }
-                        
                     )
                 }
             }
@@ -117,4 +109,3 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
         }
     }
 }
-

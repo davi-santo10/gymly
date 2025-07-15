@@ -14,7 +14,7 @@ data class Exercise(
     val muscleGroup : MuscleGroup,
     val type: ExerciseType,
     val restTime: Int?,
-    val imageUrl: String?
+    val iconResId: Int
 )
 
 object ExerciseTypeConverter {
@@ -33,5 +33,4 @@ object ExerciseTypeConverter {
     @TypeConverter
     @JvmStatic
     fun toExerciseType(value: String): ExerciseType = ExerciseType.valueOf(value)
-
 }

@@ -1,13 +1,18 @@
 package br.santo.gymly.data
 
 enum class MuscleGroup {
-    CHEST,
-    BACK,
-    SHOULDERS,
-    QUADRICEPS,
-    HAMSTRINGS,
-    CALVES,
     BICEPS,
-    TRICEPS,
-
+    CALVES,
+    CARDIO,
+    CHEST,
+    CORE,
+    FOREARMS,
+    FRONT_DELTS,
+    GLUTES,
+    HAMSTRINGS,
+    LATS,
+    LOWER_BACK,
+    QUADS,
+    REAR_DELTS,
+    TRICEPS
 }

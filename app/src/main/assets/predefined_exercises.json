@@ -5,7 +5,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_2",
@@ -13,7 +13,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_3",
@@ -21,7 +21,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_4",
@@ -29,7 +29,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_5",
@@ -37,7 +37,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_6",
@@ -45,7 +45,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_7",
@@ -53,7 +53,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_8",
@@ -61,7 +61,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_9",
@@ -69,7 +69,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_10",
@@ -77,7 +77,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_11",
@@ -85,7 +85,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_12",
@@ -93,7 +93,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_13",
@@ -101,7 +101,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_14",
@@ -109,15 +109,15 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_15",
     "name": "Dumbbell Pullover",
-    "muscleGroup": "CHEST",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_16",
@@ -125,7 +125,7 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_17",
@@ -133,127 +133,127 @@
     "muscleGroup": "CHEST",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_18",
     "name": "Pull-up",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_19",
     "name": "Lat Pulldown",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_20",
     "name": "Bent Over Barbell Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_21",
     "name": "T-Bar Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_22",
     "name": "Seated Cable Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_23",
     "name": "Dumbbell Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_24",
     "name": "Face Pull",
-    "muscleGroup": "BACK",
+    "muscleGroup": "REAR_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_25",
     "name": "Chin-up",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_26",
     "name": "Pendlay Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_27",
     "name": "Inverted Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_28",
     "name": "Straight-Arm Pulldown",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_29",
     "name": "Rack Pull",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LOWER_BACK",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_30",
     "name": "Hyperextension",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LOWER_BACK",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_31",
     "name": "Machine Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_32",
     "name": "Seal Row",
-    "muscleGroup": "BACK",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_33",
@@ -261,7 +261,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_34",
@@ -269,7 +269,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_35",
@@ -277,7 +277,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_36",
@@ -285,7 +285,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_37",
@@ -293,7 +293,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_38",
@@ -301,7 +301,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_39",
@@ -309,7 +309,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_40",
@@ -317,15 +317,15 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_41",
     "name": "Reverse Grip Barbell Curl",
-    "muscleGroup": "BICEPS",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_42",
@@ -333,7 +333,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_43",
@@ -341,7 +341,7 @@
     "muscleGroup": "BICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_44",
@@ -349,7 +349,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_45",
@@ -357,7 +357,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_46",
@@ -365,7 +365,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_47",
@@ -373,7 +373,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_48",
@@ -381,7 +381,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_49",
@@ -389,7 +389,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_50",
@@ -397,7 +397,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_51",
@@ -405,7 +405,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_52",
@@ -413,7 +413,7 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_53",
@@ -421,167 +421,167 @@
     "muscleGroup": "TRICEPS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_54",
     "name": "Overhead Press (Barbell)",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_55",
     "name": "Seated Dumbbell Press",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_56",
     "name": "Dumbbell Lateral Raise",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_57",
     "name": "Dumbbell Front Raise",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_58",
     "name": "Bent Over Dumbbell Raise",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "REAR_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_59",
     "name": "Barbell Shrug",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "LATS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_60",
     "name": "Arnold Press",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_61",
     "name": "Upright Row",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_62",
     "name": "Machine Shoulder Press",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_63",
     "name": "Cable Lateral Raise",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_64",
     "name": "Landmine Press",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_65",
     "name": "Reverse Pec-Deck",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "REAR_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_66",
     "name": "Pike Push-up",
-    "muscleGroup": "SHOULDERS",
+    "muscleGroup": "FRONT_DELTS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_67",
     "name": "Dumbbell Wrist Curl",
-    "muscleGroup": "FOREARM",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_68",
     "name": "Dumbbell Reverse Wrist Curl",
-    "muscleGroup": "FOREARM",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_69",
     "name": "Farmer's Walk",
-    "muscleGroup": "FOREARM",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_70",
     "name": "Barbell Wrist Curl",
-    "muscleGroup": "FOREARM",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_71",
     "name": "Barbell Reverse Wrist Curl",
-    "muscleGroup": "FOREARM",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_72",
     "name": "Plate Pinch",
-    "muscleGroup": "FOREARM",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_73",
     "name": "Wrist Roller",
-    "muscleGroup": "FOREARM",
+    "muscleGroup": "FOREARMS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_74",
@@ -589,7 +589,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_75",
@@ -597,7 +597,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_76",
@@ -605,7 +605,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_77",
@@ -613,7 +613,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_78",
@@ -621,7 +621,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_79",
@@ -629,7 +629,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_80",
@@ -637,7 +637,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_81",
@@ -645,7 +645,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_82",
@@ -653,7 +653,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_83",
@@ -661,7 +661,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_84",
@@ -669,7 +669,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_85",
@@ -677,7 +677,7 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_86",
@@ -685,103 +685,103 @@
     "muscleGroup": "CORE",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_87",
     "name": "Barbell Back Squat",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_88",
     "name": "Leg Press",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_89",
     "name": "Lunge",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_90",
     "name": "Leg Extension",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_91",
     "name": "Goblet Squat",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_92",
     "name": "Barbell Front Squat",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_93",
     "name": "Hack Squat",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_94",
     "name": "Bulgarian Split Squat",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_95",
     "name": "Sissy Squat",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_96",
     "name": "Step-Up",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_97",
     "name": "Walking Lunge",
-    "muscleGroup": "QUADRICEPS",
+    "muscleGroup": "QUADS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_98",
     "name": "Deadlift",
-    "muscleGroup": "HAMSTRINGS",
+    "muscleGroup": "LOWER_BACK",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_99",
@@ -789,7 +789,7 @@
     "muscleGroup": "HAMSTRINGS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_100",
@@ -797,7 +797,7 @@
     "muscleGroup": "HAMSTRINGS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_101",
@@ -805,15 +805,15 @@
     "muscleGroup": "HAMSTRINGS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_102",
     "name": "Good Morning",
-    "muscleGroup": "HAMSTRINGS",
+    "muscleGroup": "LOWER_BACK",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_103",
@@ -821,7 +821,7 @@
     "muscleGroup": "HAMSTRINGS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_104",
@@ -829,15 +829,15 @@
     "muscleGroup": "HAMSTRINGS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_105",
     "name": "Kettlebell Swing",
-    "muscleGroup": "HAMSTRINGS",
+    "muscleGroup": "GLUTES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_106",
@@ -845,7 +845,7 @@
     "muscleGroup": "HAMSTRINGS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_107",
@@ -853,7 +853,7 @@
     "muscleGroup": "HAMSTRINGS",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_108",
@@ -861,7 +861,7 @@
     "muscleGroup": "CALVES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_109",
@@ -869,7 +869,7 @@
     "muscleGroup": "CALVES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_110",
@@ -877,7 +877,7 @@
     "muscleGroup": "CALVES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_111",
@@ -885,7 +885,7 @@
     "muscleGroup": "CALVES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_112",
@@ -893,7 +893,7 @@
     "muscleGroup": "CALVES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_113",
@@ -901,7 +901,7 @@
     "muscleGroup": "CALVES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_114",
@@ -909,7 +909,7 @@
     "muscleGroup": "CALVES",
     "type": "STRENGTH",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_115",
@@ -917,7 +917,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_116",
@@ -925,7 +925,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_117",
@@ -933,7 +933,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_118",
@@ -941,7 +941,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_119",
@@ -949,7 +949,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_120",
@@ -957,7 +957,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_121",
@@ -965,7 +965,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_122",
@@ -973,7 +973,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_123",
@@ -981,7 +981,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_124",
@@ -989,7 +989,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_125",
@@ -997,7 +997,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_126",
@@ -1005,7 +1005,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_127",
@@ -1013,7 +1013,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_128",
@@ -1021,7 +1021,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_129",
@@ -1029,7 +1029,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_130",
@@ -1037,7 +1037,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_131",
@@ -1045,7 +1045,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_132",
@@ -1053,7 +1053,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_133",
@@ -1061,7 +1061,7 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
   },
   {
     "id": "ex_134",
@@ -1069,6 +1069,30 @@
     "muscleGroup": "CARDIO",
     "type": "CARDIO",
     "restTime": null,
-    "imageUrl": null
+    "iconResId": 0
+  },
+  {
+    "id": "ex_135",
+    "name": "Hip Thrust",
+    "muscleGroup": "GLUTES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "iconResId": 0
+  },
+  {
+    "id": "ex_136",
+    "name": "Glute Bridge",
+    "muscleGroup": "GLUTES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "iconResId": 0
+  },
+  {
+    "id": "ex_137",
+    "name": "Cable Kickback",
+    "muscleGroup": "GLUTES",
+    "type": "STRENGTH",
+    "restTime": null,
+    "iconResId": 0
   }
 ]
