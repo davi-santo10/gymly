@@ -22,7 +22,7 @@ class ExercisesViewModel(exerciseRepository: ExerciseRepository) : ViewModel() {
         MuscleGroup.FRONT_DELTS,
         MuscleGroup.REAR_DELTS,
         MuscleGroup.LOWER_BACK,
-        MuscleGroup.QUADS,
+        MuscleGroup.QUADRICEPS,
         MuscleGroup.HAMSTRINGS,
         MuscleGroup.GLUTES,
         MuscleGroup.CALVES,

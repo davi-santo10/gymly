@@ -12,7 +12,7 @@ enum class MuscleGroup {
     HAMSTRINGS,
     LATS,
     LOWER_BACK,
-    QUADS,
+    QUADRICEPS,
     REAR_DELTS,
     TRICEPS
 }

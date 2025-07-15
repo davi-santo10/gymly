@@ -690,7 +690,7 @@
   {
     "id": "ex_87",
     "name": "Barbell Back Squat",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -698,7 +698,7 @@
   {
     "id": "ex_88",
     "name": "Leg Press",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -706,7 +706,7 @@
   {
     "id": "ex_89",
     "name": "Lunge",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -714,7 +714,7 @@
   {
     "id": "ex_90",
     "name": "Leg Extension",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -722,7 +722,7 @@
   {
     "id": "ex_91",
     "name": "Goblet Squat",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -730,7 +730,7 @@
   {
     "id": "ex_92",
     "name": "Barbell Front Squat",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -738,7 +738,7 @@
   {
     "id": "ex_93",
     "name": "Hack Squat",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -746,7 +746,7 @@
   {
     "id": "ex_94",
     "name": "Bulgarian Split Squat",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -754,7 +754,7 @@
   {
     "id": "ex_95",
     "name": "Sissy Squat",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -762,7 +762,7 @@
   {
     "id": "ex_96",
     "name": "Step-Up",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0
@@ -770,7 +770,7 @@
   {
     "id": "ex_97",
     "name": "Walking Lunge",
-    "muscleGroup": "QUADS",
+    "muscleGroup": "QUADRICEPS",
     "type": "STRENGTH",
     "restTime": null,
     "iconResId": 0

@@ -19,7 +19,7 @@ object MuscleGroupIconMapper {
             MuscleGroup.HAMSTRINGS -> R.drawable.hamstrings
             MuscleGroup.LATS -> R.drawable.lats
             MuscleGroup.LOWER_BACK -> R.drawable.lowerback
-            MuscleGroup.QUADS -> R.drawable.quads
+            MuscleGroup.QUADRICEPS -> R.drawable.quads
             MuscleGroup.REAR_DELTS -> R.drawable.rear_delts
             MuscleGroup.TRICEPS -> R.drawable.triceps
         }

@@ -18,12 +18,9 @@ import java.util.Locale
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ExercisesList (
+fun ExercisesList(
     groupedExercises: Map<MuscleGroup, List<Exercise>>,
     listState: LazyListState,
-    searchQuery: String,
-    onQueryChange: (String) -> Unit,
-    onFilterClick: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
@@ -32,20 +29,17 @@ fun ExercisesList (
         state = listState,
         contentPadding = contentPadding // Use padding from the Scaffold
     ) {
-        // The LibraryHeader is now the first item in the list.
-        item {
-            ExerciseLibraryHeader(
-                searchQuery = searchQuery,
-                onQueryChange = onQueryChange,
-                onFilterClick = onFilterClick
-            )
-        }
-
-        // The rest of the list follows as before.
         groupedExercises.forEach { (muscleGroup, exercisesInGroup) ->
             stickyHeader {
-                val formattedTitle = muscleGroup.name.lowercase(Locale.getDefault())
-                    .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+
+                val formattedTitle = muscleGroup.name
+                    .replace('_', ' ')
+                    .lowercase(Locale.getDefault())
+                    .split(' ')
+                    .joinToString(" ") { it.replaceFirstChar { char ->
+                        if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else char.toString()
+                    }}
+
                 MuscleGroupHeader(title = formattedTitle)
             }
 
