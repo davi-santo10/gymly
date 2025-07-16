@@ -20,14 +20,12 @@ import java.util.Locale
 @Composable
 fun ExercisesList(
     groupedExercises: Map<MuscleGroup, List<Exercise>>,
-    listState: LazyListState,
+
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+
 ) {
     LazyColumn(
         modifier = modifier.fillMaxSize(),
-        state = listState,
-        contentPadding = contentPadding // Use padding from the Scaffold
     ) {
         groupedExercises.forEach { (muscleGroup, exercisesInGroup) ->
             stickyHeader {

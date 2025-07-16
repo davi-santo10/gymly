@@ -1,8 +1,6 @@
 package br.santo.gymly.ui.exercises
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,7 +23,6 @@ import br.santo.gymly.ui.exercises.components.ExercisesList
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExercisesScreen(
-    modifier: Modifier = Modifier,
 ) {
     val application = LocalContext.current.applicationContext as ExerciseApplication
     val viewModel: ExercisesViewModel = viewModel(
@@ -34,22 +31,8 @@ fun ExercisesScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     var searchQuery by remember { mutableStateOf("") }
 
-    val listState = rememberLazyListState()
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
-
     Scaffold(
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = { /* TODO */ },
-                icon = { Icon(Icons.Default.Add, "Add Exercise") },
-                text = { Text("Add Exercise") }
-            )
-        },
-
-
-    ) {
-        Column {
+        topBar = {
             ExerciseTopAppBar(
                 searchQuery = searchQuery,
                 onQueryChange = { newQuery ->
@@ -57,12 +40,19 @@ fun ExercisesScreen(
                     viewModel.onSearchQueryChanged(newQuery)
                 },
                 onFilterClick = { /* TODO */ },
-                scrollBehavior = scrollBehavior
             )
-            ExercisesList(
-                groupedExercises = uiState.groupedExercises,
-                listState = listState
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = { /* TODO */ },
+                icon = { Icon(Icons.Default.Add, "Add Exercise") },
+                text = { Text("Add Exercise") }
             )
-        }
+        },
+    ) { innerPadding ->
+        ExercisesList(
+            modifier = Modifier.padding(innerPadding),
+            groupedExercises = uiState.groupedExercises
+        )
     }
 }

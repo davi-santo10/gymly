@@ -1,11 +1,7 @@
 package br.santo.gymly.ui.exercises.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FilterList
@@ -19,7 +15,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,7 +28,6 @@ fun ExerciseTopAppBar(
     onQueryChange: (String) -> Unit,
     onFilterClick: () -> Unit,
     modifier: Modifier = Modifier,
-    scrollBehavior: TopAppBarScrollBehavior
 ) {
     TopAppBar(
         modifier = modifier,
@@ -67,7 +61,6 @@ fun ExerciseTopAppBar(
             containerColor = Color.Transparent
         ),
         windowInsets = WindowInsets(0.dp),
-        scrollBehavior = scrollBehavior
 
     )
 }
