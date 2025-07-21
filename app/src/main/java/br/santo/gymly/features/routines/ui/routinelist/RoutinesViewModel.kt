@@ -1,0 +1,27 @@
+package br.santo.gymly.features.routines.ui.routinelist
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import br.santo.gymly.features.routines.data.Routine
+import br.santo.gymly.features.routines.data.RoutinesRepository
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+
+data class RoutinesUiState(
+    val routines: List<Routine> = emptyList()
+)
+
+class RoutinesViewModel(private val repository: RoutinesRepository) : ViewModel() {
+    val uiState: StateFlow<RoutinesUiState> = repository.allRoutines
+        .map { routines ->
+            RoutinesUiState(routines)
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000L),
+            initialValue = RoutinesUiState()
+        )
+}
+

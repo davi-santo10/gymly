@@ -11,47 +11,59 @@ import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
-import br.santo.gymly.ui.exercises.ExercisesScreen
-import br.santo.gymly.ui.home.HomeScreen
-import br.santo.gymly.ui.friends.FriendsScreen
-import br.santo.gymly.ui.progress.ProgressScreen
-import br.santo.gymly.ui.routines.RoutinesScreen
 import androidx.navigation.compose.composable
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
-import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import br.santo.gymly.features.exercises.ui.ExercisesScreen
+import br.santo.gymly.features.routines.ui.createroutine.CreateRoutineScreen
+import br.santo.gymly.features.routines.ui.routinelist.RoutinesScreen
+import br.santo.gymly.features.friends.FriendsScreen
+import br.santo.gymly.features.home.HomeScreen
+import br.santo.gymly.features.progress.ProgressScreen
 
 @Composable
 fun GymlyApp(modifier: Modifier = Modifier, windowSizeClass: WindowSizeClass) {
-    NavigationSuite(modifier = modifier, windowSizeClass = windowSizeClass.widthSizeClass)
+    val navController = rememberNavController()
+    NavigationSuite(
+        modifier = modifier,
+        windowSizeClass = windowSizeClass.widthSizeClass,
+        navController = navController
+    )
 }
 
 @Composable
-fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthSizeClass){
-    val navController = rememberNavController()
-    val navigationItems = listOf(Screen.Home, Screen.Routines, Screen.Exercises, Screen.Progress, Screen.Friends)
+fun NavigationSuite(
+    modifier: Modifier = Modifier,
+    windowSizeClass: WindowWidthSizeClass,
+    navController: NavHostController
+) {
+    val navigationItems = listOf(Screen.Home, Screen.Routines, Screen.Progress, Screen.Friends)
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    if (windowSizeClass == WindowWidthSizeClass.Compact) {
+    val isCompact = windowSizeClass == WindowWidthSizeClass.Compact
+
+    if (isCompact) {
         Scaffold(
             modifier = modifier,
             bottomBar = {
-                NavigationBar (windowInsets = NavigationBarDefaults.windowInsets) {
+                NavigationBar(windowInsets = NavigationBarDefaults.windowInsets) {
                     navigationItems.forEach { screen ->
                         NavigationBarItem(
                             selected = (currentRoute == screen.route),
                             onClick = {
                                 navController.navigate(screen.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
-                                    }
+                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
                                     launchSingleTop = true
                                     restoreState = true
                                 }
@@ -63,17 +75,10 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
                 }
             }
         ) { innerPadding ->
-            NavHost(
+            AppNavHost(
                 navController = navController,
-                startDestination = Screen.Home.route,
                 modifier = Modifier.padding(innerPadding)
-            ) {
-                composable(Screen.Home.route) { HomeScreen() }
-                composable(Screen.Routines.route) { RoutinesScreen() }
-                composable(Screen.Exercises.route) { ExercisesScreen() }
-                composable(Screen.Progress.route) { ProgressScreen() }
-                composable(Screen.Friends.route) { FriendsScreen() }
-            }
+            )
         }
     } else {
         Row(Modifier.fillMaxSize()) {
@@ -83,9 +88,7 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
                         selected = (currentRoute == screen.route),
                         onClick = {
                             navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
+                                popUpTo(navController.graph.findStartDestination().id) { saveState = true }
                                 launchSingleTop = true
                                 restoreState = true
                             }
@@ -95,17 +98,46 @@ fun NavigationSuite(modifier: Modifier = Modifier, windowSizeClass: WindowWidthS
                     )
                 }
             }
-            NavHost(
+            AppNavHost(
                 navController = navController,
-                startDestination = Screen.Home.route,
                 modifier = Modifier.weight(1f)
-            ) {
-                composable(Screen.Home.route) { HomeScreen() }
-                composable(Screen.Routines.route) { RoutinesScreen() }
-                composable(Screen.Exercises.route) { ExercisesScreen() }
-                composable(Screen.Progress.route) { ProgressScreen() }
-                composable(Screen.Friends.route) { FriendsScreen() }
-            }
+            )
+        }
+    }
+}
+
+@Composable
+fun AppNavHost(
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = Screen.Home.route,
+        modifier = modifier
+    ) {
+        composable(Screen.Home.route) { HomeScreen() }
+        composable(
+            route = Screen.Exercises.route, // Agora corresponde à rota do Navigation.kt
+            arguments = listOf(navArgument("initialIds") {
+                type = NavType.StringType
+                defaultValue = "" // Essencial para quando não passamos IDs
+            })
+        ) { backStackEntry ->
+            ExercisesScreen(
+                navController = navController,
+                initialSelectedIds = backStackEntry.arguments?.getString("initialIds")
+            )
+        }
+        composable(Screen.Progress.route) { ProgressScreen() }
+        composable(Screen.Friends.route) { FriendsScreen() }
+
+
+        composable(Screen.Routines.route) {
+            RoutinesScreen(navController = navController)
+        }
+        composable(Screen.CreateRoutine.route) {
+            CreateRoutineScreen(navController = navController)
         }
     }
 }

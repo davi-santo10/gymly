@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import br.santo.gymly.ui.GymlyApp
-import br.santo.gymly.ui.theme.GimlyTheme
+import br.santo.gymly.core.ui.theme.GimlyTheme
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 class MainActivity : ComponentActivity() {
@@ -16,10 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val windowSizeClass = calculateWindowSizeClass(this)
-            GimlyTheme {
-                GymlyApp(windowSizeClass = windowSizeClass)
-                }
-            }
+            GimlyTheme { GymlyApp(windowSizeClass = windowSizeClass) }
         }
     }
-
+}

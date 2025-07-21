@@ -8,7 +8,15 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class Screen(val route: String, val title: String, val icon: ImageVector) {
     object Home : Screen("home", "Home", Icons.Default.Home)
     object Routines : Screen("routines", "Routines", Icons.AutoMirrored.Filled.List)
-    object Exercises : Screen("exercises", "Exercises", Icons.Default.FitnessCenter)
+
+    object Exercises : Screen("exercises?initialIds={initialIds}", "Exercises", Icons.Default.FitnessCenter) {
+        fun createRoute(initialIds: Set<String>): String {
+            val ids = initialIds.joinToString(",")
+            return if (ids.isEmpty()) "exercises" else "exercises?initialIds=$ids"
+        }
+    }
+
     object Progress : Screen("progress", "Progress", Icons.Default.TrackChanges)
     object Friends : Screen("friends", "Friends", Icons.Default.People)
+    object CreateRoutine : Screen("create_routine", "Create Routine", Icons.Default.Add)
 }
