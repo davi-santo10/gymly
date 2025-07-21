@@ -24,12 +24,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import br.santo.gymly.features.exercises.ui.ExercisesScreen
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.ExercisesScreen
 import br.santo.gymly.features.routines.ui.createroutine.CreateRoutineScreen
 import br.santo.gymly.features.routines.ui.routinelist.RoutinesScreen
 import br.santo.gymly.features.friends.FriendsScreen
 import br.santo.gymly.features.home.HomeScreen
 import br.santo.gymly.features.progress.ProgressScreen
+import br.santo.gymly.features.routines.ui.details.RoutineDetailsScreen
 
 @Composable
 fun GymlyApp(modifier: Modifier = Modifier, windowSizeClass: WindowSizeClass) {
@@ -118,10 +119,10 @@ fun AppNavHost(
     ) {
         composable(Screen.Home.route) { HomeScreen() }
         composable(
-            route = Screen.Exercises.route, // Agora corresponde à rota do Navigation.kt
+            route = Screen.Exercises.route,
             arguments = listOf(navArgument("initialIds") {
                 type = NavType.StringType
-                defaultValue = "" // Essencial para quando não passamos IDs
+                defaultValue = ""
             })
         ) { backStackEntry ->
             ExercisesScreen(
@@ -138,6 +139,15 @@ fun AppNavHost(
         }
         composable(Screen.CreateRoutine.route) {
             CreateRoutineScreen(navController = navController)
+        }
+        composable(
+            route = Screen.RoutineDetails.route,
+            arguments = listOf(navArgument("routineId") {type = NavType.IntType})
+        ) { backStackEntry ->
+            val routineId = backStackEntry.arguments?.getInt("routineId")
+            requireNotNull(routineId) {"routineId cannot be null"}
+            RoutineDetailsScreen(navController = navController, routineId = routineId)
+
         }
     }
 }

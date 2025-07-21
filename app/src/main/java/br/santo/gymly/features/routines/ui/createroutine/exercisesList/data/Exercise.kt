@@ -1,4 +1,4 @@
-package br.santo.gymly.features.exercises.data
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

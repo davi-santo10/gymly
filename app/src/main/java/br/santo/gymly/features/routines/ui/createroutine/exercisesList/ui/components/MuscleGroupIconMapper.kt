@@ -1,8 +1,8 @@
-package br.santo.gymly.features.exercises.ui.components
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components
 
 import androidx.annotation.DrawableRes
 import br.santo.gymly.R
-import br.santo.gymly.features.exercises.data.MuscleGroup
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.MuscleGroup
 
 object MuscleGroupIconMapper {
     @DrawableRes

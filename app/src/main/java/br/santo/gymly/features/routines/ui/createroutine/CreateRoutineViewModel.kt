@@ -2,9 +2,10 @@ package br.santo.gymly.features.routines.ui.createroutine
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.santo.gymly.features.exercises.data.ExerciseRepository
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
 import br.santo.gymly.features.routines.data.Routine
 import br.santo.gymly.features.routines.data.RoutineExercise
+import br.santo.gymly.features.routines.data.RoutineExerciseCrossRef
 import br.santo.gymly.features.routines.data.RoutinesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -34,11 +35,6 @@ class CreateRoutineViewModel(
         }
     }
 
-    fun updateRoutineDescription(newDescription: String) {
-        _uiState.update { currentState ->
-            currentState.copy(routineDescription = newDescription)
-        }
-    }
 
     fun updateSelectedExercises(exerciseIds: List<String>) {
        viewModelScope.launch {
@@ -76,10 +72,20 @@ class CreateRoutineViewModel(
 
         viewModelScope.launch {
             val newRoutine = Routine(
-               name = uiState.value.routineName,
-                description = uiState.value.routineDescription
+                name = uiState.value.routineName
             )
-            routinesRepository.upsertRoutine(newRoutine)
+            val newRoutineId = routinesRepository.upsertRoutine(newRoutine).toInt()
+
+            val crossRefs = uiState.value.routineExercises.map { routineExercise ->
+                RoutineExerciseCrossRef(
+                    routineId = newRoutineId,
+                    exerciseId = routineExercise.exercise.id,
+                    sets = routineExercise.sets,
+                    reps = routineExercise.reps,
+                )
+            }
+            routinesRepository.upsertRoutineExerciseCrossRefs(crossRefs)
+
             onRoutineSaved()
         }
     }

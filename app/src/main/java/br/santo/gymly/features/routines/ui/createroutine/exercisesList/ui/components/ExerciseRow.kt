@@ -1,4 +1,4 @@
-package br.santo.gymly.features.exercises.ui.components
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,7 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import br.santo.gymly.features.exercises.data.Exercise
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.Exercise
 
 @Composable
 fun ExerciseRow(

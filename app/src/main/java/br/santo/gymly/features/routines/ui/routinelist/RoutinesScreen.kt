@@ -67,32 +67,15 @@ fun RoutinesScreen(navController: NavController) {
       modifier = Modifier.padding(innerPadding)
     ) {
       items(uiState.routines) { routine ->
-        RoutineItem(routine = routine)
+        RoutineItem(
+          routine = routine,
+          onClick = {
+            navController.navigate(Screen.RoutineDetails.createRoute(routine.id))
+        }
+      )
       }
     }
     
   }
 }
 
-@Composable
-fun RoutineItem (
-  routine: Routine,
-  modifier: Modifier = Modifier
-) {
-  Card (
-    modifier = modifier
-      .fillMaxWidth()
-      .padding(horizontal = 16.dp, vertical = 8.dp)
-  ) {
-    Row(
-      modifier = Modifier.padding(16.dp),
-      verticalAlignment = Alignment.CenterVertically
-    ) {
-      Icon(
-        imageVector = Icons.Default.FitnessCenter,
-        contentDescription = "Routine train icon",
-        modifier = Modifier.size(40.dp)
-      )
-    }
-  }
-}

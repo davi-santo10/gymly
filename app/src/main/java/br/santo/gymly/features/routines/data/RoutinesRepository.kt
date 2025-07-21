@@ -6,11 +6,19 @@ class RoutinesRepository(private val routineDao: RoutineDao) {
 
     val allRoutines: Flow<List<Routine>> = routineDao.getAllRoutines()
 
-    suspend fun upsertRoutine(routine: Routine) {
-        routineDao.upsertRoutine(routine)
+    suspend fun upsertRoutine(routine: Routine): Long {
+        return routineDao.upsertRoutine(routine)
     }
 
     suspend fun deleteRoutine(routine: Routine) {
         routineDao.deleteRoutine(routine)
+    }
+
+    suspend fun upsertRoutineExerciseCrossRefs(crossRefs: List<RoutineExerciseCrossRef>) {
+        routineDao.upsertRoutineExerciseCrossRefs(crossRefs)
+    }
+
+    fun getRoutineWithExercises(routineId: Int): Flow<RoutineWithExercises> {
+        return routineDao.getRoutineWithExercises(routineId)
     }
 }

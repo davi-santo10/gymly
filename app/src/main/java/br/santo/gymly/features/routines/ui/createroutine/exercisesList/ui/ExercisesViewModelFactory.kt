@@ -1,8 +1,8 @@
-package br.santo.gymly.features.exercises.ui
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import br.santo.gymly.features.exercises.data.ExerciseRepository
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
 
 
 class ExercisesViewModelFactory(

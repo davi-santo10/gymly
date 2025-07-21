@@ -1,10 +1,10 @@
-package br.santo.gymly.features.exercises.ui
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.santo.gymly.features.exercises.data.Exercise
-import br.santo.gymly.features.exercises.data.ExerciseRepository
-import br.santo.gymly.features.exercises.data.MuscleGroup
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.Exercise
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.MuscleGroup
 import kotlinx.coroutines.flow.*
 
 data class ExercisesUiState(

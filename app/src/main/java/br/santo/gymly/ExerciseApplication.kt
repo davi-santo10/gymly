@@ -2,7 +2,7 @@ package br.santo.gymly
 
 import android.app.Application
 import br.santo.gymly.core.data.AppDatabase
-import br.santo.gymly.features.exercises.data.ExerciseRepository
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
 import br.santo.gymly.features.routines.data.RoutinesRepository
 
 class ExerciseApplication : Application() {

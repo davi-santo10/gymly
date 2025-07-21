@@ -2,7 +2,7 @@ package br.santo.gymly.features.routines.ui.createroutine
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import br.santo.gymly.features.exercises.data.ExerciseRepository
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
 import br.santo.gymly.features.routines.data.RoutinesRepository
 
 class CreateRoutineViewModelFactory(

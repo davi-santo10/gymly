@@ -6,18 +6,23 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import br.santo.gymly.features.exercises.data.Exercise
-import br.santo.gymly.features.exercises.data.ExerciseDao
-import br.santo.gymly.features.exercises.data.ExerciseTypeConverter
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.Exercise
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseDao
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseTypeConverter
 import br.santo.gymly.features.routines.data.Routine
 import br.santo.gymly.features.routines.data.RoutineDao
+import br.santo.gymly.features.routines.data.RoutineExerciseCrossRef
 
-// BUMP THE VERSION NUMBER FROM 1 TO 2
 @Database(
     entities = [
-    Exercise::class,
-    Routine::class
-                     ], version = 3, exportSchema = false)
+        Exercise::class,
+        Routine::class,
+        RoutineExerciseCrossRef::class
+    ],
+    version = 6,
+    exportSchema = false
+)
+
 
 @TypeConverters(ExerciseTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {

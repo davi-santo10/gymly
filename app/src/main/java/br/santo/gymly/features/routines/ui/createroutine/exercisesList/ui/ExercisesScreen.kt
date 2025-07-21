@@ -1,10 +1,9 @@
-package br.santo.gymly.features.exercises.ui
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -15,8 +14,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import br.santo.gymly.ExerciseApplication
-import br.santo.gymly.features.exercises.ui.components.ExerciseTopAppBar
-import br.santo.gymly.features.exercises.ui.components.ExercisesList
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components.ExerciseTopAppBar
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components.ExercisesList
 
 const val SELECTED_EXERCISES_KEY = "selected_exercises"
 

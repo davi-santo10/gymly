@@ -19,4 +19,10 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
     object Progress : Screen("progress", "Progress", Icons.Default.TrackChanges)
     object Friends : Screen("friends", "Friends", Icons.Default.People)
     object CreateRoutine : Screen("create_routine", "Create Routine", Icons.Default.Add)
+
+    object RoutineDetails : Screen("routine_details/{routineId}", "Routine Details", Icons.Default.Menu) {
+        fun createRoute(routineId : Int) : String {
+            return "routine_details/$routineId"
+        }
+    }
 }

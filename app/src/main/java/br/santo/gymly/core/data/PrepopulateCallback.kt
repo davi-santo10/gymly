@@ -3,7 +3,7 @@ import android.content.Context
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import br.santo.gymly.core.data.AppDatabase
-import br.santo.gymly.features.exercises.data.Exercise
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.Exercise
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.InputStreamReader

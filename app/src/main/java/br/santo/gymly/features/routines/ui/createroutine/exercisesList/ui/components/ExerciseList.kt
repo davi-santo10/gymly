@@ -1,4 +1,4 @@
-package br.santo.gymly.features.exercises.ui.components
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,8 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import br.santo.gymly.features.exercises.data.Exercise
-import br.santo.gymly.features.exercises.data.MuscleGroup
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.Exercise
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.MuscleGroup
 import java.util.Locale
 
 @OptIn(ExperimentalFoundationApi::class)

@@ -1,4 +1,4 @@
-package br.santo.gymly.features.exercises.ui.components
+package br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth

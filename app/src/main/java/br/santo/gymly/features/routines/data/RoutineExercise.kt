@@ -1,6 +1,6 @@
 package br.santo.gymly.features.routines.data
 
-import br.santo.gymly.features.exercises.data.Exercise
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.Exercise
 
 data class RoutineExercise (
     val exercise: Exercise,
