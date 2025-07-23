@@ -105,7 +105,8 @@ fun CreateRoutineScreen(navController: NavController) {
                         },
                         onRepsChanged = { newReps ->
                             viewModel.onRepsChanged(routineExercise.exercise.id, newReps)
-                        }
+                        },
+                        isEditable = true
                     )
                 }
                 item {
