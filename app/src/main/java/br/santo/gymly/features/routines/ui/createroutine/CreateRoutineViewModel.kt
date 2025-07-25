@@ -7,18 +7,23 @@ import br.santo.gymly.features.routines.data.RoutineExercise
 import br.santo.gymly.features.routines.data.RoutineExerciseCrossRef
 import br.santo.gymly.features.routines.data.RoutinesRepository
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 data class CreateRoutineUiState(
     val routineName: String = "",
-    val routineExercises: List<RoutineExercise> = emptyList()
+    val routineExercises: List<RoutineExercise> = emptyList(),
+    val isTimerSheetVisible: Boolean = false,
+    val exerciseToSetTimer: RoutineExercise? = null
 )
 
-class CreateRoutineViewModel(
+@HiltViewModel
+class CreateRoutineViewModel @Inject constructor (
     private val routinesRepository: RoutinesRepository,
     private val exerciseRepository: ExerciseRepository
 ) : ViewModel() {
@@ -30,13 +35,20 @@ class CreateRoutineViewModel(
         _uiState.update { it.copy(routineName = newName) }
     }
 
-    // THIS IS THE NEW, CORRECTED FUNCTION
     fun updateSelectedExercises(selectedIds: List<String>) {
         viewModelScope.launch {
             val newExercises = exerciseRepository.getExercisesByIds(selectedIds).first()
-            val currentExerciseIds = _uiState.value.routineExercises.map { it.exercise.id }
+            val currentExercises = _uiState.value.routineExercises
+            val currentExerciseIds = currentExercises.map { it.exercise.id }
             val trulyNewExercises = newExercises.filter { it.id !in currentExerciseIds }
-            val newRoutineExercises = trulyNewExercises.map { RoutineExercise(it) }
+
+            val lastOrder = currentExercises.maxOfOrNull { it.order } ?: -1
+            val newRoutineExercises = trulyNewExercises.mapIndexed { index, exercise ->
+                RoutineExercise(
+                    exercise = exercise,
+                    order = lastOrder + 1 + index
+                )
+            }
 
             _uiState.update { currentState ->
                 currentState.copy(routineExercises = currentState.routineExercises + newRoutineExercises)
@@ -70,31 +82,87 @@ class CreateRoutineViewModel(
         }
     }
 
-    fun moveExercise(from: Int, to: Int) {
-        if (from == to) return
+    fun moveExerciseUp(index: Int) {
+        if (index > 0) {
+            val exercises = _uiState.value.routineExercises.toMutableList()
+            val exercise = exercises.removeAt(index)
+            exercises.add(index - 1, exercise)
+            _uiState.update { it.copy(routineExercises = exercises) }
+        }
+    }
+
+    fun moveExerciseDown(index: Int) {
+        val currentExercises = _uiState.value.routineExercises
+        if (index < currentExercises.size - 1) {
+            val exercises = currentExercises.toMutableList()
+            val exercise = exercises.removeAt(index)
+            exercises.add(index + 1, exercise)
+            _uiState.update { it.copy(routineExercises = exercises) }
+        }
+    }
+
+    fun onTimerIconClick(exerciseId: String) {
+        val exercise = _uiState.value.routineExercises.find { it.exercise.id == exerciseId }
+        _uiState.update {
+            it.copy(
+                isTimerSheetVisible = true,
+                exerciseToSetTimer = exercise
+            )
+        }
+    }
+
+    fun onDismissTimerSheet() {
+        _uiState.update {
+            it.copy(
+                isTimerSheetVisible = false,
+                exerciseToSetTimer = null
+            )
+        }
+    }
+
+    fun onTimeSelected(seconds: Int) {
+        val exerciseId = _uiState.value.exerciseToSetTimer?.exercise?.id ?: return
+
         _uiState.update { currentState ->
-            val mutableExercises = currentState.routineExercises.toMutableList()
-            val item = mutableExercises.removeAt(from)
-            mutableExercises.add(to, item)
-            currentState.copy(routineExercises = mutableExercises)
+            val updatedExercises = currentState.routineExercises.map {
+                if (it.exercise.id == exerciseId) {
+                    it.copy(restTimeSeconds = seconds)
+                } else {
+                    it
+                }
+            }
+            currentState.copy(
+                routineExercises = updatedExercises,
+                isTimerSheetVisible = false,
+                exerciseToSetTimer = null
+            )
         }
     }
 
     fun saveRoutine(onRoutineSaved: () -> Unit) {
         viewModelScope.launch {
+            // Step 1: Save the routine and get its new ID
             val newRoutineId = routinesRepository.upsertRoutine(
                 Routine(name = _uiState.value.routineName)
             ).toInt()
 
-            val crossRefs = _uiState.value.routineExercises.map { routineExercise ->
-                RoutineExerciseCrossRef(
-                    routineId = newRoutineId,
-                    exerciseId = routineExercise.exercise.id,
-                    sets = routineExercise.sets,
-                    reps = routineExercise.reps
-                )
+            // Step 2: If there are exercises, create the links (CrossRefs) and save them
+            if (_uiState.value.routineExercises.isNotEmpty()) {
+                val crossRefs = _uiState.value.routineExercises.mapIndexed { index, routineExercise ->
+                    RoutineExerciseCrossRef(
+                        routineId = newRoutineId,
+                        exerciseId = routineExercise.exercise.id,
+                        sets = routineExercise.sets,
+                        reps = routineExercise.reps,
+                        order = index,
+                        restTimeSeconds = routineExercise.restTimeSeconds
+                    )
+                }
+                // Use the correct repository method to save the links
+                routinesRepository.upsertRoutineExerciseCrossRefs(crossRefs)
             }
-            routinesRepository.upsertRoutineExerciseCrossRefs(crossRefs)
+
+            // Step 3: Navigate back
             onRoutineSaved()
         }
     }

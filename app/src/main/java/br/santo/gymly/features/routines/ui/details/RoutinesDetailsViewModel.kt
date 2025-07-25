@@ -8,31 +8,34 @@ import br.santo.gymly.features.routines.data.RoutineExercise
 import br.santo.gymly.features.routines.data.RoutineExerciseCrossRef
 import br.santo.gymly.features.routines.data.RoutinesRepository
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-// 1. Corrected the UiState data class
 data class RoutinesDetailsUiState(
     val routine: Routine? = null,
     val routineExercises: List<RoutineExercise> = emptyList(),
-    val isEditing: Boolean = false
+    val isEditing: Boolean = false,
+    val isTimerSheetVisible: Boolean = false,
+    val exerciseToSetTimer: RoutineExercise? = null
 )
 
-class RoutineDetailsViewModel(
+@HiltViewModel
+class RoutineDetailsViewModel @Inject constructor(
     private val routinesRepository: RoutinesRepository,
-    private val exerciseRepository: ExerciseRepository, // This was missing
+    private val exerciseRepository: ExerciseRepository,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(RoutinesDetailsUiState())
     val uiState = _uiState.asStateFlow()
 
     private val routineId: Int = checkNotNull(savedStateHandle["routineId"])
+    private var originalExercises: List<RoutineExercise> = emptyList()
 
     init {
         viewModelScope.launch {
@@ -50,18 +53,24 @@ class RoutineDetailsViewModel(
                         RoutineExercise(
                             exercise = exercise,
                             sets = crossRef?.sets ?: "3",
-                            reps = crossRef?.reps ?: "10"
+                            reps = crossRef?.reps ?: "10",
+                            order = crossRef?.order ?: 0,
+                            restTimeSeconds = crossRef?.restTimeSeconds ?: 60
                         )
                     }
 
                     RoutinesDetailsUiState(
                         routine = routineWithExercises.routine,
-                        routineExercises = detailedExercises,
+                        routineExercises = detailedExercises.sortedBy { it.order },
                         isEditing = _uiState.value.isEditing
                     )
                 }
             }.collect { newState ->
                 _uiState.value = newState
+
+                if (originalExercises.isEmpty()) {
+                    originalExercises = newState.routineExercises
+                }
             }
         }
 
@@ -69,11 +78,17 @@ class RoutineDetailsViewModel(
         selectedIdsHandle.observeForever { selectedIds ->
             if (selectedIds != null && selectedIds.isNotEmpty()) {
                 viewModelScope.launch {
-
                     val newExercises = exerciseRepository.getExercisesByIds(selectedIds.toList()).first()
-                    val currentExerciseIds = _uiState.value.routineExercises.map {it.exercise.id}
-                    val trulyNewExercises = newExercises.filter { it.id !in currentExerciseIds}
-                    val newRoutineExercises = trulyNewExercises.map { RoutineExercise(it)}
+                    val currentExerciseIds = _uiState.value.routineExercises.map { it.exercise.id }
+                    val trulyNewExercises = newExercises.filter { it.id !in currentExerciseIds }
+
+                    val lastOrder = _uiState.value.routineExercises.maxOfOrNull { it.order } ?: -1
+                    val newRoutineExercises = trulyNewExercises.mapIndexed { index, exercise ->
+                        RoutineExercise(
+                            exercise = exercise,
+                            order = lastOrder + 1 + index
+                        )
+                    }
 
                     _uiState.update { currentState ->
                         currentState.copy(routineExercises = currentState.routineExercises + newRoutineExercises)
@@ -84,9 +99,22 @@ class RoutineDetailsViewModel(
         }
     }
 
-
     fun toggleEditMode() {
-        _uiState.update { it.copy(isEditing = !it.isEditing) }
+        if (_uiState.value.isEditing) {
+            discardChanges()
+        } else {
+            _uiState.update { it.copy(isEditing = true) }
+            originalExercises = _uiState.value.routineExercises
+        }
+    }
+
+    fun discardChanges() {
+        _uiState.update {
+            it.copy(
+                routineExercises = originalExercises,
+                isEditing = false
+            )
+        }
     }
 
     fun onSetsChanged(exerciseId: String, newSets: String) {
@@ -115,24 +143,79 @@ class RoutineDetailsViewModel(
         }
     }
 
+    fun moveExerciseUp(index: Int) {
+        if (index > 0) {
+            val exercises = _uiState.value.routineExercises.toMutableList()
+            val exercise = exercises.removeAt(index)
+            exercises.add(index - 1, exercise)
+            _uiState.update { it.copy(routineExercises = exercises) }
+        }
+    }
 
+    fun moveExerciseDown(index: Int) {
+        val currentExercises = _uiState.value.routineExercises
+        if (index < currentExercises.size - 1) {
+            val exercises = currentExercises.toMutableList()
+            val exercise = exercises.removeAt(index)
+            exercises.add(index + 1, exercise)
+            _uiState.update { it.copy(routineExercises = exercises) }
+        }
+    }
+
+    fun onTimerIconClick(exerciseId: String) {
+        if (!_uiState.value.isEditing) return
+        val exercise = _uiState.value.routineExercises.find { it.exercise.id == exerciseId }
+        _uiState.update {
+            it.copy(
+                isTimerSheetVisible = true,
+                exerciseToSetTimer = exercise
+            )
+        }
+    }
+
+    fun onDismissTimerSheet() {
+        _uiState.update {
+            it.copy(
+                isTimerSheetVisible = false,
+                exerciseToSetTimer = null
+            )
+        }
+    }
+
+    fun onTimeSelected(seconds: Int) {
+        val exerciseId = _uiState.value.exerciseToSetTimer?.exercise?.id ?: return
+
+        _uiState.update { currentState ->
+            val updatedExercises = currentState.routineExercises.map {
+                if (it.exercise.id == exerciseId) {
+                    it.copy(restTimeSeconds = seconds)
+                } else {
+                    it
+                }
+            }
+            currentState.copy(
+                routineExercises = updatedExercises,
+                isTimerSheetVisible = false,
+                exerciseToSetTimer = null
+            )
+        }
+    }
 
     fun saveChanges() {
         viewModelScope.launch {
             val exercises = _uiState.value.routineExercises
-
-            val crossRefs = exercises.map { routineExercise ->
+            val crossRefs = exercises.mapIndexed { index, routineExercise ->
                 RoutineExerciseCrossRef(
                     routineId = routineId,
                     exerciseId = routineExercise.exercise.id,
                     sets = routineExercise.sets,
-                    reps = routineExercise.reps
+                    reps = routineExercise.reps,
+                    order = index,
+                    restTimeSeconds = routineExercise.restTimeSeconds
                 )
             }
-
             routinesRepository.deleteCrossRefsForRoutine(routineId)
             routinesRepository.upsertRoutineExerciseCrossRefs(crossRefs)
-
             toggleEditMode()
         }
     }

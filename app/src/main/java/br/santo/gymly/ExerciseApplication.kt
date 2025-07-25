@@ -4,7 +4,9 @@ import android.app.Application
 import br.santo.gymly.core.data.AppDatabase
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
 import br.santo.gymly.features.routines.data.RoutinesRepository
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class ExerciseApplication : Application() {
     private val database by lazy { AppDatabase.getDatabase(this) }
     val exerciseRepository by lazy { ExerciseRepository(database.exerciseDao()) }

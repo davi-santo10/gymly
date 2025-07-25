@@ -19,7 +19,7 @@ import br.santo.gymly.features.routines.data.RoutineExerciseCrossRef
         Routine::class,
         RoutineExerciseCrossRef::class
     ],
-    version = 7,
+    version = 9,
     exportSchema = false
 )
 

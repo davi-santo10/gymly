@@ -8,12 +8,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import br.santo.gymly.ExerciseApplication
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components.ExerciseTopAppBar
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.components.ExercisesList
 
@@ -22,25 +20,14 @@ const val SELECTED_EXERCISES_KEY = "selected_exercises"
 @Composable
 fun ExercisesScreen(
     navController: NavController,
-    initialSelectedIds: String?
+    viewModel: ExercisesViewModel = hiltViewModel()
 ) {
-    val application = LocalContext.current.applicationContext as ExerciseApplication
-    val viewModel: ExercisesViewModel = viewModel(
-        factory = ExercisesViewModelFactory(
-            repository = application.exerciseRepository,
-            initialIds = if (initialSelectedIds.isNullOrEmpty()) {
-                emptySet()
-            } else {
-                initialSelectedIds.split(',').toSet()
-            }
-        )
-    )
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
             ExerciseTopAppBar(
-                searchQuery = uiState.searchQuery, // Agora esta linha funciona!
+                searchQuery = uiState.searchQuery,
                 onQueryChange = viewModel::onSearchQueryChanged,
                 onFilterClick = { /* TODO */ },
                 windowInsets = WindowInsets(0.dp)
@@ -59,7 +46,7 @@ fun ExercisesScreen(
                     .padding(16.dp),
                 enabled = uiState.selectedExerciseIds.isNotEmpty()
             ) {
-                Text("CONFIRMAR SELEÇÃO")
+                Text("Confirm Selection")
             }
         }
     ) { innerPadding ->

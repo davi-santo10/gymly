@@ -1,6 +1,9 @@
 package br.santo.gymly.features.routines.ui.createroutine
 
-import android.graphics.drawable.Icon
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.VisibilityThreshold
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,42 +12,42 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import br.santo.gymly.ExerciseApplication
+import br.santo.gymly.features.routines.ui.components.RoutineExerciseItem
+import br.santo.gymly.features.routines.ui.components.TimerSelectionSheet
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.SELECTED_EXERCISES_KEY
 import br.santo.gymly.ui.Screen
 
-@OptIn(ExperimentalMaterial3Api:: class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun CreateRoutineScreen(navController: NavController) {
-    val application = LocalContext.current.applicationContext as ExerciseApplication
-    val viewModel: CreateRoutineViewModel = viewModel(
-        factory = CreateRoutineViewModelFactory(
-            application.routinesRepository,
-            application.exerciseRepository
-        )
-    )
+fun CreateRoutineScreen(
+    navController: NavController,
+    viewModel: CreateRoutineViewModel = hiltViewModel()
+) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     val routineListResult = navController.currentBackStackEntry
         ?.savedStateHandle
@@ -52,10 +55,12 @@ fun CreateRoutineScreen(navController: NavController) {
 
     LaunchedEffect(routineListResult) {
         routineListResult?.observeForever { result ->
-            viewModel.updateSelectedExercises(result)
-            navController.currentBackStackEntry?.savedStateHandle?.remove<List<String>>(
-                SELECTED_EXERCISES_KEY
-            )
+            if (result != null) {
+                viewModel.updateSelectedExercises(result)
+                navController.currentBackStackEntry?.savedStateHandle?.remove<List<String>>(
+                    SELECTED_EXERCISES_KEY
+                )
+            }
         }
     }
 
@@ -66,7 +71,7 @@ fun CreateRoutineScreen(navController: NavController) {
                     Text("Create new routine")
                 },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack()}) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Back"
@@ -93,12 +98,17 @@ fun CreateRoutineScreen(navController: NavController) {
                     OutlinedTextField(
                         value = uiState.routineName,
                         onValueChange = viewModel::updateRoutineName,
-                        label = { Text("Routine Name")},
+                        label = { Text("Routine Name") },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
-                items(uiState.routineExercises, key = { it.exercise.id}) { routineExercise ->
+                itemsIndexed(uiState.routineExercises, key = { _, it -> it.exercise.id }) { index, routineExercise ->
                     RoutineExerciseItem(
+                        modifier = Modifier.animateItem(fadeInSpec = null, fadeOutSpec = null, placementSpec = spring(
+                                    stiffness = Spring.StiffnessMediumLow,
+                                    visibilityThreshold = IntOffset.VisibilityThreshold
+                                )
+                        ),
                         routineExercise = routineExercise,
                         onSetsChanged = { newSets ->
                             viewModel.onSetsChanged(routineExercise.exercise.id, newSets)
@@ -106,7 +116,14 @@ fun CreateRoutineScreen(navController: NavController) {
                         onRepsChanged = { newReps ->
                             viewModel.onRepsChanged(routineExercise.exercise.id, newReps)
                         },
-                        isEditable = true
+                        isEditable = true,
+                        onMoveUp = { viewModel.moveExerciseUp(index) },
+                        onMoveDown = { viewModel.moveExerciseDown(index) },
+                        isFirst = index == 0,
+                        isLast = index == uiState.routineExercises.lastIndex,
+                        onTimerClick = { exerciseId ->
+                            viewModel.onTimerIconClick(exerciseId)
+                        }
                     )
                 }
                 item {
@@ -129,11 +146,25 @@ fun CreateRoutineScreen(navController: NavController) {
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(16.dp),
+                enabled = uiState.routineName.isNotBlank() && uiState.routineExercises.isNotEmpty()
             ) {
                 Text("Save Routine")
             }
+        }
+    }
 
+    if (uiState.isTimerSheetVisible && uiState.exerciseToSetTimer != null) {
+        ModalBottomSheet(
+            onDismissRequest = { viewModel.onDismissTimerSheet() },
+            sheetState = sheetState
+        ) {
+            TimerSelectionSheet(
+                currentRestTimeSeconds = uiState.exerciseToSetTimer!!.restTimeSeconds,
+                onTimeSelected = { seconds ->
+                    viewModel.onTimeSelected(seconds)
+                }
+            )
         }
     }
 }

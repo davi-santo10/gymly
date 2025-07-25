@@ -16,6 +16,7 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -24,13 +25,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.ExercisesScreen
-import br.santo.gymly.features.routines.ui.createroutine.CreateRoutineScreen
-import br.santo.gymly.features.routines.ui.routinelist.RoutinesScreen
 import br.santo.gymly.features.friends.FriendsScreen
 import br.santo.gymly.features.home.HomeScreen
 import br.santo.gymly.features.progress.ProgressScreen
+import br.santo.gymly.features.routines.ui.createroutine.CreateRoutineScreen
+import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.ExercisesScreen
 import br.santo.gymly.features.routines.ui.details.RoutineDetailsScreen
+import br.santo.gymly.features.routines.ui.routinelist.RoutinesScreen
 
 @Composable
 fun GymlyApp(modifier: Modifier = Modifier, windowSizeClass: WindowSizeClass) {
@@ -124,11 +125,10 @@ fun AppNavHost(
                 type = NavType.StringType
                 defaultValue = ""
             })
-        ) { backStackEntry ->
-            ExercisesScreen(
-                navController = navController,
-                initialSelectedIds = backStackEntry.arguments?.getString("initialIds")
-            )
+        ) {
+            // The ExercisesScreen doesn't need the parameter passed directly
+            // because Hilt handles the SavedStateHandle in the ViewModel.
+            ExercisesScreen(navController = navController)
         }
         composable(Screen.Progress.route) { ProgressScreen() }
         composable(Screen.Friends.route) { FriendsScreen() }
@@ -142,12 +142,11 @@ fun AppNavHost(
         }
         composable(
             route = Screen.RoutineDetails.route,
-            arguments = listOf(navArgument("routineId") {type = NavType.IntType})
-        ) { backStackEntry ->
-            val routineId = backStackEntry.arguments?.getInt("routineId")
-            requireNotNull(routineId) {"routineId cannot be null"}
-            RoutineDetailsScreen(navController = navController, routineId = routineId)
-
+            arguments = listOf(navArgument("routineId") { type = NavType.IntType })
+        ) {
+            // The RoutineDetailsScreen no longer needs the routineId passed
+            // as a parameter because the ViewModel gets it from the SavedStateHandle.
+            RoutineDetailsScreen(navController = navController)
         }
     }
 }
