@@ -13,7 +13,6 @@ data class WorkoutSet (
 data class ActiveWorkoutExercise(
     val exercise: Exercise,
     val sets: List<WorkoutSet>,
-    val isExpanded: Boolean = false,
     val targetSets: Int,
     val restTimeSeconds: Int = 60
 ) {

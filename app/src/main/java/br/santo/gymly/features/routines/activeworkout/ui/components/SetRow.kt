@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -40,6 +41,14 @@ fun SetRow(
         mutableStateOf(if (workoutSet.weight == 0f) "" else workoutSet.weight.toString())
     }
 
+    val isCompleted = workoutSet.isCompleted
+
+    val textFieldAlpha = if(isCompleted) 0.6f else 1.0f
+    val textColor = if(isCompleted) {
+        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+    } else {
+        MaterialTheme.colorScheme.onSurface
+    }
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -57,29 +66,63 @@ fun SetRow(
         OutlinedTextField(
             value = repsText,
             onValueChange = { newValue ->
-                repsText = newValue
-                newValue.toIntOrNull()?.let { reps ->
-                    onRepsChange(reps)
+                if (!isCompleted) {
+                    repsText = newValue
+                    newValue.toIntOrNull()?.let { reps ->
+                        onRepsChange(reps)
+                    }
                 }
             },
-            placeholder = { Text(targetReps.toString()) },
+            placeholder = {
+                Text(
+                    targetReps.toString(),
+                    color = if (isCompleted) Color.Gray else Color.Unspecified
+                )
+            },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            modifier = Modifier.weight(1f),
-            singleLine = true
+            modifier = Modifier
+                .weight(1f)
+                .then(
+                    if (isCompleted) Modifier else Modifier
+                ),
+            singleLine = true,
+            enabled = !isCompleted,
+            colors = androidx.compose.material3.TextFieldDefaults.colors(
+                disabledTextColor = textColor,
+                disabledContainerColor = MaterialTheme.colorScheme.surface,
+                disabledIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+            )
         )
 
         OutlinedTextField(
             value = weightText,
             onValueChange = { newValue ->
-                weightText = newValue
-                newValue.toFloatOrNull()?.let { weight ->
-                    onWeightChange(weight)
+                if (!isCompleted) {
+                    weightText = newValue
+                    newValue.toFloatOrNull()?.let { weight ->
+                        onWeightChange(weight)
+                    }
                 }
             },
-            placeholder = { Text("0.0") },
+            placeholder = {
+                Text(
+                    "0.0",
+                    color = if (isCompleted) Color.Gray else Color.Unspecified
+                )
+            },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-            modifier = Modifier.weight(1f),
-            singleLine = true
+            modifier = Modifier
+                .weight(1f)
+                .then(
+                    if (isCompleted) Modifier else Modifier // Could add visual effects here
+                ),
+            singleLine = true,
+            enabled = !isCompleted,
+            colors = androidx.compose.material3.TextFieldDefaults.colors(
+                disabledTextColor = textColor,
+                disabledContainerColor = MaterialTheme.colorScheme.surface,
+                disabledIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+            )
         )
 
         Checkbox(

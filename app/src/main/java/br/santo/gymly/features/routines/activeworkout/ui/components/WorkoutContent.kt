@@ -19,6 +19,7 @@ import br.santo.gymly.features.routines.activeworkout.data.ActiveWorkout
 @Composable
 fun WorkoutContent(
     activeWorkout: ActiveWorkout,
+    expandedExerciseIndex: Int?,
     onExerciseClick: (Int) -> Unit,
     onSetRepsChange: (Int, Int, Int) -> Unit,
     onSetWeightChange: (Int, Int, Float) -> Unit,
@@ -41,6 +42,7 @@ fun WorkoutContent(
             ) { index, activeExercise ->
                 ActiveExerciseCard(
                     activeExercise = activeExercise,
+                    isExpanded = expandedExerciseIndex == index,
                     onExerciseClick = { onExerciseClick(index) },
                     onSetRepsChange = { setIndex, reps ->
                         onSetRepsChange(index, setIndex, reps)

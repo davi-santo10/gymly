@@ -108,7 +108,6 @@ fun ActiveWorkoutScreen(
                 }
             }
 
-            // Success state - show the workout interface
             else -> {
                 uiState.activeWorkout?.let { activeWorkout ->
                     WorkoutContent(
@@ -122,7 +121,8 @@ fun ActiveWorkoutScreen(
                                 navController.popBackStack()
                             }
                         },
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        expandedExerciseIndex = uiState.expandedExerciseIndex
                     )
                 }
             }

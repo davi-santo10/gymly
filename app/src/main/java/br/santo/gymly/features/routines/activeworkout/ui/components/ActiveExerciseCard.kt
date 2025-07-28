@@ -18,6 +18,7 @@ import br.santo.gymly.features.routines.activeworkout.data.ActiveWorkoutExercise
 @Composable
 fun ActiveExerciseCard(
     activeExercise: ActiveWorkoutExercise,
+    isExpanded : Boolean,
     onExerciseClick: () -> Unit,
     onSetRepsChange: (setIndex: Int, reps: Int) -> Unit,
     onSetWeightChange: (setIndex: Int, weight: Float) -> Unit, // Changed to Float
@@ -46,7 +47,7 @@ fun ActiveExerciseCard(
             )
 
             AnimatedVisibility(
-                visible = activeExercise.isExpanded,
+                visible = isExpanded,
                 enter = expandVertically(),
                 exit = shrinkVertically()
             ) {
