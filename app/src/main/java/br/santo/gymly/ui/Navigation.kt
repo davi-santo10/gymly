@@ -25,4 +25,10 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
             return "routine_details/$routineId"
         }
     }
+    object ActiveWorkout : Screen("active_workout/{routineId}", "Active Workout`", Icons.Default.PlayArrow) {
+        fun createRoute(routineId: Int): String {
+            return "active_workout/$routineId"
+        }
+    }
+
 }

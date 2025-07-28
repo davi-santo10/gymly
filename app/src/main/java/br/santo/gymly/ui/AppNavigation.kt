@@ -28,6 +28,7 @@ import androidx.navigation.navArgument
 import br.santo.gymly.features.friends.FriendsScreen
 import br.santo.gymly.features.home.HomeScreen
 import br.santo.gymly.features.progress.ProgressScreen
+import br.santo.gymly.features.routines.activeworkout.ui.ActiveWorkoutScreen
 import br.santo.gymly.features.routines.ui.createroutine.CreateRoutineScreen
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.ExercisesScreen
 import br.santo.gymly.features.routines.ui.details.RoutineDetailsScreen
@@ -144,9 +145,14 @@ fun AppNavHost(
             route = Screen.RoutineDetails.route,
             arguments = listOf(navArgument("routineId") { type = NavType.IntType })
         ) {
-            // The RoutineDetailsScreen no longer needs the routineId passed
-            // as a parameter because the ViewModel gets it from the SavedStateHandle.
+
             RoutineDetailsScreen(navController = navController)
+        }
+        composable (
+            route = Screen.ActiveWorkout.route,
+            arguments = listOf(navArgument("routineId") { type = NavType.IntType})
+        ) {
+            ActiveWorkoutScreen(navController = navController)
         }
     }
 }
