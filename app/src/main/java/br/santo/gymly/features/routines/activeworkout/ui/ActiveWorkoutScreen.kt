@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import br.santo.gymly.features.routines.activeworkout.ui.components.RestTimerDisplay
 import br.santo.gymly.features.routines.activeworkout.ui.components.WorkoutContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,75 +58,88 @@ fun ActiveWorkoutScreen(
             )
         }
     ) { innerPadding ->
-        when {
-            // Loading state - show progress indicator
-            uiState.isLoading -> {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
+        Box (
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            when {
+                uiState.isLoading -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        contentAlignment = Alignment.Center
                     ) {
-                        CircularProgressIndicator()
-                        Text(
-                            text = "Loading workout...",
-                            style = MaterialTheme.typography.bodyLarge
-                        )
-                    }
-                }
-            }
-
-            // Error state - show error message
-            uiState.error != null -> {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
-                    ) {
-                        Text(
-                            text = "Error",
-                            style = MaterialTheme.typography.titleLarge,
-                            color = MaterialTheme.colorScheme.error
-                        )
-                        Text(
-                            text = uiState.error ?: "Unknown error",
-                            style = MaterialTheme.typography.bodyMedium,
-                            textAlign = TextAlign.Center
-                        )
-                        Button(onClick = { navController.popBackStack() }) {
-                            Text("Go Back")
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            CircularProgressIndicator()
+                            Text(
+                                text = "Loading workout...",
+                                style = MaterialTheme.typography.bodyLarge
+                            )
                         }
                     }
                 }
-            }
 
-            else -> {
-                uiState.activeWorkout?.let { activeWorkout ->
-                    WorkoutContent(
-                        activeWorkout = activeWorkout,
-                        onExerciseClick = viewModel::toggleExerciseExpansion,
-                        onSetRepsChange = viewModel::updateSetReps,
-                        onSetWeightChange = viewModel::updateSetWeight,
-                        onSetCompletionToggle = viewModel::toggleSetCompletion,
-                        onFinishWorkout = {
-                            viewModel.finishWorkout {
-                                navController.popBackStack()
+                uiState.error != null -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            Text(
+                                text = "Error",
+                                style = MaterialTheme.typography.titleLarge,
+                                color = MaterialTheme.colorScheme.error
+                            )
+                            Text(
+                                text = uiState.error ?: "Unknown error",
+                                style = MaterialTheme.typography.bodyMedium,
+                                textAlign = TextAlign.Center
+                            )
+                            Button(onClick = { navController.popBackStack() }) {
+                                Text("Go Back")
                             }
-                        },
-                        modifier = Modifier.padding(innerPadding),
-                        expandedExerciseIndex = uiState.expandedExerciseIndex
-                    )
+                        }
+                    }
+                }
+
+                else -> {
+                    uiState.activeWorkout?.let { activeWorkout ->
+                        WorkoutContent(
+                            activeWorkout = activeWorkout,
+                            onExerciseClick = viewModel::toggleExerciseExpansion,
+                            onSetRepsChange = viewModel::updateSetReps,
+                            onSetWeightChange = viewModel::updateSetWeight,
+                            onSetCompletionToggle = viewModel::toggleSetCompletion,
+                            onFinishWorkout = {
+                                viewModel.finishWorkout {
+                                    navController.popBackStack()
+                                }
+                            },
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(innerPadding),
+                            expandedExerciseIndex = uiState.expandedExerciseIndex,
+                            isTimerActive = uiState.restTimer != null
+                        )
+                    }
                 }
             }
+            RestTimerDisplay (
+                timerState = uiState.restTimer,
+                onTogglePause = viewModel::toggleTimerPause,
+                onStopTimer = viewModel::stopRestTimer,
+                modifier = Modifier.align(Alignment.BottomCenter)
+
+            )
         }
     }
 }

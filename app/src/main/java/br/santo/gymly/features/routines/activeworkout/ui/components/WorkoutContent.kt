@@ -3,6 +3,7 @@ package br.santo.gymly.features.routines.activeworkout.ui.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,6 +26,7 @@ fun WorkoutContent(
     onSetWeightChange: (Int, Int, Float) -> Unit,
     onSetCompletionToggle: (Int, Int) -> Unit,
     onFinishWorkout: () -> Unit,
+    isTimerActive: Boolean = false,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -55,13 +57,26 @@ fun WorkoutContent(
                     }
                 )
             }
+
+            if (isTimerActive) {
+                item {
+                    Spacer(
+                        modifier = Modifier.padding(vertical = 40.dp)
+                    )
+                }
+            }
         }
 
         Button(
             onClick = onFinishWorkout,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    top = 16.dp,
+                    bottom = if (isTimerActive) 88.dp else 16.dp
+                ),
             enabled = activeWorkout.exercises.isNotEmpty()
         ) {
             Text(
