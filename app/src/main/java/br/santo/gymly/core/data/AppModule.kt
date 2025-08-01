@@ -3,6 +3,7 @@ package br.santo.gymly.core.data
 import android.content.Context
 import br.santo.gymly.features.routines.data.RoutineDao
 import br.santo.gymly.features.routines.data.RoutinesRepository
+import br.santo.gymly.features.routines.data.ExerciseGroupDao
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseDao
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.data.ExerciseRepository
 import dagger.Module
@@ -13,11 +14,11 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class) // This means dependencies live as long as the app
+@InstallIn(SingletonComponent::class)
 object AppModule {
 
     @Provides
-    @Singleton // Use @Singleton to ensure only one instance of the database is created
+    @Singleton
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
         return AppDatabase.getDatabase(context)
     }
@@ -33,13 +34,22 @@ object AppModule {
     }
 
     @Provides
-    @Singleton // Only one instance of the repository
-    fun provideRoutinesRepository(routineDao: RoutineDao): RoutinesRepository {
-        return RoutinesRepository(routineDao)
+    fun provideExerciseGroupDao(appDatabase: AppDatabase): ExerciseGroupDao {
+        return appDatabase.exerciseGroupDao()
     }
 
     @Provides
-    @Singleton // Only one instance of the repository
+    @Singleton
+    fun provideRoutinesRepository(
+        routineDao: RoutineDao,
+        exerciseGroupDao: ExerciseGroupDao,
+        exerciseDao: ExerciseDao
+    ): RoutinesRepository {
+        return RoutinesRepository(routineDao, exerciseGroupDao, exerciseDao)
+    }
+
+    @Provides
+    @Singleton
     fun provideExerciseRepository(exerciseDao: ExerciseDao): ExerciseRepository {
         return ExerciseRepository(exerciseDao)
     }

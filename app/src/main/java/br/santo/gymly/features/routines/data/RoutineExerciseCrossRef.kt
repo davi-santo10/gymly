@@ -9,5 +9,8 @@ data class RoutineExerciseCrossRef(
     val sets: String,
     val reps: String,
     val order: Int,
-    val restTimeSeconds: Int = 60
+    val restTimeSeconds: Int = 60,
+
+    val groupId: Int? = null,
+    val orderInGroup: Int = 0
 )

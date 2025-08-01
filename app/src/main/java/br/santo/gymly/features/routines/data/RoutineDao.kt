@@ -32,4 +32,50 @@ interface RoutineDao {
     // ADD THIS NEW FUNCTION
     @Query("SELECT * FROM RoutineExerciseCrossRef WHERE routineId = :routineId")
     fun getCrossRefsForRoutine(routineId: Int): Flow<List<RoutineExerciseCrossRef>>
+
+    @Query("""
+        SELECT * FROM RoutineExerciseCrossRef 
+        WHERE routineId = :routineId 
+        ORDER BY 
+            CASE WHEN groupId IS NULL THEN `order` ELSE groupId END,
+            orderInGroup ASC
+    """)
+    fun getCrossRefsWithGroupsForRoutine(routineId: Int): Flow<List<RoutineExerciseCrossRef>>
+
+    @Query("""
+        SELECT * FROM RoutineExerciseCrossRef 
+        WHERE routineId = :routineId AND groupId IS NULL
+        ORDER BY `order` ASC
+    """)
+    fun getUngroupedCrossRefsForRoutine(routineId: Int): Flow<List<RoutineExerciseCrossRef>>
+
+
+    @Query("""
+        SELECT * FROM RoutineExerciseCrossRef 
+        WHERE routineId = :routineId AND groupId = :groupId
+        ORDER BY orderInGroup ASC
+    """)
+    fun getCrossRefsForGroup(routineId: Int, groupId: Int): Flow<List<RoutineExerciseCrossRef>>
+
+
+    @Query("""
+        UPDATE RoutineExerciseCrossRef 
+        SET groupId = :groupId, orderInGroup = :orderInGroup
+        WHERE routineId = :routineId AND exerciseId = :exerciseId
+    """)
+    suspend fun updateExerciseGroup(routineId: Int, exerciseId: String, groupId: Int?, orderInGroup: Int)
+
+
+    @Query("""
+        UPDATE RoutineExerciseCrossRef 
+        SET groupId = NULL, orderInGroup = 0
+        WHERE routineId = :routineId AND groupId = :groupId
+    """)
+    suspend fun removeExercisesFromGroup(routineId: Int, groupId: Int)
+
+    @Query("""
+        SELECT MAX(`order`) FROM RoutineExerciseCrossRef 
+        WHERE routineId = :routineId AND groupId IS NULL
+    """)
+    suspend fun getMaxOrderForRoutine(routineId: Int): Int?
 }
