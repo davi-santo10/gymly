@@ -19,6 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,7 +40,19 @@ fun RoutinesScreen(
 
   val uiState by viewModel.uiState.collectAsStateWithLifecycle()
   var isNavigating by remember { mutableStateOf(false) }
-  
+
+  val snackbarHostState = remember { SnackbarHostState() }
+
+  LaunchedEffect(uiState.deleteError) {
+    uiState.deleteError?.let { error ->
+      snackbarHostState.showSnackbar (
+        message = error,
+        actionLabel = "OK"
+      )
+      viewModel.clearDeleteError()
+    }
+  }
+
   Scaffold(
     topBar = {
       TopAppBar(
@@ -51,8 +66,8 @@ fun RoutinesScreen(
       // Use AnimatedVisibility to smoothly hide the FAB
       AnimatedVisibility(
         visible = !isNavigating,
-        exit = fadeOut(animationSpec = tween(100)) +
-                scaleOut(animationSpec = tween(100))
+        exit = fadeOut(animationSpec = tween(150)) +
+                scaleOut(animationSpec = tween(150))
       ) {
         FloatingActionButton(
           onClick = {
@@ -66,22 +81,36 @@ fun RoutinesScreen(
           )
         }
       }
+    },
+    snackbarHost = {
+      SnackbarHost(hostState = snackbarHostState)
     }
   ) { innerPadding ->
     LazyColumn(
       modifier = Modifier.padding(innerPadding)
     ) {
-      items(uiState.routines) { routine ->
-        RoutineItem(
+      items(
+        items = uiState.routines,
+        key = { routine -> routine.id }
+      ) { routine ->
+        SwipeToDeleteRoutineItem(
           routine = routine,
-          onClick = {
+          onRoutineClick = {
             isNavigating = true
             navController.navigate(Screen.RoutineDetails.createRoute(routine.id))
-        }
-      )
+          },
+          onDeleteRoutine = { routineToDelete ->
+            viewModel.deleteRoutine(
+              routine = routineToDelete,
+              onDeleteComplete = {
+              }
+            )
+          },
+          isDeleting = uiState.isDeleting
+        )
       }
     }
-    
   }
 }
+
 
