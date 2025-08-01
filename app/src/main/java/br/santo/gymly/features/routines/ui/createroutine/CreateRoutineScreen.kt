@@ -7,6 +7,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.GroupWork
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -37,6 +39,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import br.santo.gymly.features.routines.ui.components.RoutineExerciseItem
 import br.santo.gymly.features.routines.ui.components.TimerSelectionSheet
+import br.santo.gymly.features.routines.ui.createroutine.components.ExerciseGroupCard
+import br.santo.gymly.features.routines.ui.createroutine.components.GroupCreationDialog
 import br.santo.gymly.features.routines.ui.createroutine.exercisesList.ui.SELECTED_EXERCISES_KEY
 import br.santo.gymly.ui.Screen
 
@@ -47,7 +51,8 @@ fun CreateRoutineScreen(
     viewModel: CreateRoutineViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val timerSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val groupDialogSheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
     val routineListResult = navController.currentBackStackEntry
         ?.savedStateHandle
@@ -102,12 +107,44 @@ fun CreateRoutineScreen(
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
-                itemsIndexed(uiState.routineExercises, key = { _, it -> it.exercise.id }) { index, routineExercise ->
+
+                itemsIndexed(
+                    uiState.exerciseGroups,
+                    key = { _, group -> "group_${group.group.id}_${group.group.name}" }
+                ) { index, exerciseGroup ->
+                    ExerciseGroupCard(
+                        modifier = Modifier.animateItem(
+                            fadeInSpec = null,
+                            fadeOutSpec = null,
+                            placementSpec = spring(
+                                stiffness = Spring.StiffnessMediumLow,
+                                visibilityThreshold = IntOffset.VisibilityThreshold
+                            )
+                        ),
+                        exerciseGroup = exerciseGroup,
+                        isEditable = true,
+                        onEditGroup = { viewModel.showGroupEditDialog(exerciseGroup) },
+                        onDeleteGroup = { viewModel.deleteExerciseGroup(exerciseGroup) },
+                        onMoveUp = { viewModel.moveGroupUp(index) },
+                        onMoveDown = { viewModel.moveGroupDown(index) },
+                        onTimerClick = { viewModel.onGroupTimerClick(exerciseGroup) },
+                        isFirst = index == 0,
+                        isLast = index == uiState.exerciseGroups.lastIndex
+                    )
+                }
+
+                itemsIndexed(
+                    uiState.individualExercises,
+                    key = { _, exercise -> exercise.exercise.id }
+                ) { index, routineExercise ->
                     RoutineExerciseItem(
-                        modifier = Modifier.animateItem(fadeInSpec = null, fadeOutSpec = null, placementSpec = spring(
-                                    stiffness = Spring.StiffnessMediumLow,
-                                    visibilityThreshold = IntOffset.VisibilityThreshold
-                                )
+                        modifier = Modifier.animateItem(
+                            fadeInSpec = null,
+                            fadeOutSpec = null,
+                            placementSpec = spring(
+                                stiffness = Spring.StiffnessMediumLow,
+                                visibilityThreshold = IntOffset.VisibilityThreshold
+                            )
                         ),
                         routineExercise = routineExercise,
                         onSetsChanged = { newSets ->
@@ -117,27 +154,50 @@ fun CreateRoutineScreen(
                             viewModel.onRepsChanged(routineExercise.exercise.id, newReps)
                         },
                         isEditable = true,
-                        onMoveUp = { viewModel.moveExerciseUp(index) },
-                        onMoveDown = { viewModel.moveExerciseDown(index) },
-                        isFirst = index == 0,
-                        isLast = index == uiState.routineExercises.lastIndex,
+                        onMoveUp = { viewModel.moveIndividualExerciseUp(index) },
+                        onMoveDown = { viewModel.moveIndividualExerciseDown(index) },
+                        isFirst = index == 0 && uiState.exerciseGroups.isEmpty(),
+                        isLast = index == uiState.individualExercises.lastIndex,
                         onTimerClick = { exerciseId ->
                             viewModel.onTimerIconClick(exerciseId)
                         }
                     )
                 }
+
                 item {
-                    OutlinedButton(
-                        onClick = {
-                            val currentIds = uiState.routineExercises.map { it.exercise.id }.toSet()
-                            navController.navigate(Screen.Exercises.createRoute(currentIds))
-                        },
-                        modifier = Modifier.fillMaxWidth()
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        Text("Add exercises")
+                        OutlinedButton(
+                            onClick = {
+                                val currentIds = (uiState.individualExercises.map { it.exercise.id } +
+                                        uiState.exerciseGroups.flatMap { group ->
+                                            group.exercises.map { it.exercise.id }
+                                        }).toSet()
+                                navController.navigate(Screen.Exercises.createRoute(currentIds))
+                            },
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text("Add exercises")
+                        }
+
+                        OutlinedButton(
+                            onClick = { viewModel.showGroupCreationDialog() },
+                            modifier = Modifier.weight(1f),
+                            enabled = uiState.individualExercises.isNotEmpty()
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.GroupWork,
+                                contentDescription = null,
+                                modifier = Modifier.padding(end = 4.dp)
+                            )
+                            Text("Create Group")
+                        }
                     }
                 }
             }
+
             Button(
                 onClick = {
                     viewModel.saveRoutine {
@@ -147,7 +207,7 @@ fun CreateRoutineScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                enabled = uiState.routineName.isNotBlank() && uiState.routineExercises.isNotEmpty()
+                enabled = uiState.isValidForSaving
             ) {
                 Text("Save Routine")
             }
@@ -157,13 +217,50 @@ fun CreateRoutineScreen(
     if (uiState.isTimerSheetVisible && uiState.exerciseToSetTimer != null) {
         ModalBottomSheet(
             onDismissRequest = { viewModel.onDismissTimerSheet() },
-            sheetState = sheetState
+            sheetState = timerSheetState
         ) {
             TimerSelectionSheet(
                 currentRestTimeSeconds = uiState.exerciseToSetTimer!!.restTimeSeconds,
                 onTimeSelected = { seconds ->
                     viewModel.onTimeSelected(seconds)
                 }
+            )
+        }
+    }
+
+    if (uiState.isGroupCreationDialogVisible) {
+        ModalBottomSheet(
+            onDismissRequest = { viewModel.hideGroupCreationDialog() },
+            sheetState = groupDialogSheetState
+        ) {
+            GroupCreationDialog(
+                availableExercises = uiState.availableExercisesForGrouping,
+                onCreateGroup = { name, exercises, groupType, restTime ->
+                    viewModel.createExerciseGroup(name, exercises, groupType, restTime)
+                },
+                onDismiss = { viewModel.hideGroupCreationDialog() }
+            )
+        }
+    }
+
+    if (uiState.isGroupEditDialogVisible && uiState.groupBeingEdited != null) {
+        ModalBottomSheet(
+            onDismissRequest = { viewModel.hideGroupEditDialog() },
+            sheetState = groupDialogSheetState
+        ) {
+            GroupCreationDialog(
+                availableExercises = uiState.availableExercisesForGrouping + uiState.groupBeingEdited!!.exercises,
+                onCreateGroup = { name, exercises, groupType, restTime ->
+                    viewModel.updateExerciseGroup(
+                        uiState.groupBeingEdited!!,
+                        name,
+                        exercises,
+                        groupType,
+                        restTime
+                    )
+                },
+                onDismiss = { viewModel.hideGroupEditDialog() },
+                editingGroup = uiState.groupBeingEdited
             )
         }
     }

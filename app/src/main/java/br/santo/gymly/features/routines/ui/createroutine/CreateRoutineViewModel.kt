@@ -127,8 +127,7 @@ class CreateRoutineViewModel @Inject constructor (
         }
     }
 
-    // NEW: Group Management Methods
-
+    // Group Management Methods
     fun showGroupCreationDialog() {
         _uiState.update { it.copy(isGroupCreationDialogVisible = true) }
     }
@@ -238,9 +237,16 @@ class CreateRoutineViewModel @Inject constructor (
 
     fun deleteExerciseGroup(group: RoutineExerciseGroup) {
         _uiState.update { currentState ->
-            // Move group exercises back to individual exercises
-            val exercisesToRestore = group.exercises.map { exercise ->
-                exercise.copy(order = getNextExerciseOrder() + group.exercises.indexOf(exercise))
+            val nextOrder = getNextExerciseOrder()
+            val exercisesToRestore = group.exercises.mapIndexed { index, exercise ->
+                RoutineExercise(
+                    exercise = exercise.exercise,
+                    sets = exercise.sets,
+                    reps = exercise.reps,
+                    restTime = exercise.restTime,
+                    order = nextOrder + index,
+                    restTimeSeconds = exercise.restTimeSeconds
+                )
             }
 
             currentState.copy(
@@ -269,7 +275,7 @@ class CreateRoutineViewModel @Inject constructor (
         }
     }
 
-    // Timer Management (unchanged from original)
+    // Timer Management
     fun onTimerIconClick(exerciseId: String) {
         val exercise = _uiState.value.individualExercises.find { it.exercise.id == exerciseId }
         _uiState.update {
@@ -281,8 +287,13 @@ class CreateRoutineViewModel @Inject constructor (
     }
 
     fun onGroupTimerClick(group: RoutineExerciseGroup) {
+        val firstExercise = group.exercises.first()
         val placeholderExercise = RoutineExercise(
-            exercise = group.exercises.first().exercise,
+            exercise = firstExercise.exercise,
+            sets = firstExercise.sets,
+            reps = firstExercise.reps,
+            restTime = firstExercise.restTime,
+            order = firstExercise.order,
             restTimeSeconds = group.group.restTimeSeconds
         )
         _uiState.update {
@@ -354,7 +365,7 @@ class CreateRoutineViewModel @Inject constructor (
         return _uiState.value.exerciseGroups.maxOfOrNull { it.group.order } ?: 0
     }
 
-    // Save Routine (Updated to handle groups)
+    // FIXED: Save Routine - Corrected ordering logic
     fun saveRoutine(onRoutineSaved: () -> Unit) {
         viewModelScope.launch {
             try {
@@ -370,24 +381,28 @@ class CreateRoutineViewModel @Inject constructor (
                     // Create and save the group
                     val groupToSave = routineExerciseGroup.group.copy(
                         routineId = newRoutineId,
-                        order = currentOrder++
+                        order = currentOrder
                     )
                     val savedGroupId = routinesRepository.createExerciseGroup(groupToSave).toInt()
 
-                    // Create cross-references for exercises in this group
+                    // ✅ FIXED: Create cross-references for exercises in this group
+                    // Each exercise in the group gets its own incremented order
                     val groupCrossRefs = routineExerciseGroup.exercises.mapIndexed { index, routineExercise ->
                         RoutineExerciseCrossRef(
                             routineId = newRoutineId,
                             exerciseId = routineExercise.exercise.id,
                             sets = routineExercise.sets,
                             reps = routineExercise.reps,
-                            order = currentOrder, // Group's position in routine
+                            order = currentOrder + index, // ✅ Each exercise gets unique order
                             restTimeSeconds = routineExercise.restTimeSeconds,
                             groupId = savedGroupId,
                             orderInGroup = index
                         )
                     }
                     routinesRepository.upsertRoutineExerciseCrossRefs(groupCrossRefs)
+
+                    // ✅ FIXED: Increment currentOrder by the number of exercises in the group
+                    currentOrder += routineExerciseGroup.exercises.size
                 }
 
                 // Step 3: Save individual exercises
@@ -398,7 +413,7 @@ class CreateRoutineViewModel @Inject constructor (
                             exerciseId = routineExercise.exercise.id,
                             sets = routineExercise.sets,
                             reps = routineExercise.reps,
-                            order = currentOrder++,
+                            order = currentOrder++, // ✅ Each individual exercise gets unique order
                             restTimeSeconds = routineExercise.restTimeSeconds,
                             groupId = null, // Individual exercise
                             orderInGroup = 0
